@@ -1,0 +1,91 @@
+// =================
+// user.proto
+syntax = "proto3";
+
+package user.v2;
+
+option go_package = "github.com/ImamTry257/lms-proto-user/gen/go/user;userpbv2";
+
+import "google/protobuf/timestamp.proto";
+
+message ListUserRequest {
+    int32 page = 1;
+    int32 size = 2;
+    string search = 3;
+    string status = 4;
+}
+
+message GetUserByIdRequest {
+    int32 id = 1;
+}
+
+message GetUserByUuidRequest {
+    string id_ = 1;
+}
+
+message UserRequest {
+    int32 id = 1;
+    string uuid = 2;
+    string name = 3;
+    string email = 4;
+    string slug = 5;
+    string address = 6;
+    int32 is_active = 7;
+    string merchant_id = 8;
+    string role_id = 9;
+    int32 is_banned = 10;
+    int32 is_deleted = 11;
+    string user_image = 12;
+    string user_type = 13;
+    string username = 14;
+    google.protobuf.Timestamp created_at = 15;
+}
+
+message UserResponse {
+    int32 id = 1;
+    string uuid = 2;
+    string name = 3;
+    string email = 4;
+    string slug = 5;
+    string address = 6;
+    int32 is_active = 7;
+    string merchant_id = 8;
+    string role_id = 9;
+    int32 is_banned = 10;
+    int32 is_deleted = 11;
+    string user_image = 12;
+    string user_type = 13;
+    string username = 14;
+    google.protobuf.Timestamp created_at = 15;
+}
+
+message UserNameResponse {
+    string uuid = 1;
+    string name = 2;
+}
+
+message ListUserNameResponse {
+    repeated UserNameResponse data = 1;
+}
+
+message ListUserResponse {
+    repeated UserResponse data = 1;
+    int32 page = 2;
+    int32 size = 3;
+    int32 total_items = 4;
+    int32 total_pages = 5;
+}
+
+message ActionUserResponse {
+    bool is_success = 1;
+}
+
+service UserService {
+    // User
+    rpc GetAll(ListUserRequest) returns (ListUserResponse);
+    rpc Create(UserRequest) returns (ActionUserResponse);
+    rpc Update(UserRequest) returns (ActionUserResponse);
+    rpc GetById(GetUserByIdRequest) returns (UserResponse);
+    rpc GetByUuid(GetUserByUuidRequest) returns (UserResponse);
+    rpc Delete(GetUserByUuidRequest) returns (ActionUserResponse);
+}
