@@ -353,7 +353,9 @@ type UserResponse struct {
 	UserImage     string                 `protobuf:"bytes,12,opt,name=user_image,json=userImage,proto3" json:"user_image,omitempty"`
 	UserType      string                 `protobuf:"bytes,13,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
 	Username      string                 `protobuf:"bytes,14,opt,name=username,proto3" json:"username,omitempty"`
-	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	MerchantName  string                 `protobuf:"bytes,15,opt,name=merchant_name,json=merchantName,proto3" json:"merchant_name,omitempty"`
+	RoleName      string                 `protobuf:"bytes,16,opt,name=role_name,json=roleName,proto3" json:"role_name,omitempty"`
+	CreatedAt     *timestamp.Timestamp   `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -482,6 +484,20 @@ func (x *UserResponse) GetUserType() string {
 func (x *UserResponse) GetUsername() string {
 	if x != nil {
 		return x.Username
+	}
+	return ""
+}
+
+func (x *UserResponse) GetMerchantName() string {
+	if x != nil {
+		return x.MerchantName
+	}
+	return ""
+}
+
+func (x *UserResponse) GetRoleName() string {
+	if x != nil {
+		return x.RoleName
 	}
 	return ""
 }
@@ -744,7 +760,7 @@ const file_user_proto_rawDesc = "" +
 	"\tuser_type\x18\r \x01(\tR\buserType\x12\x1a\n" +
 	"\busername\x18\x0e \x01(\tR\busername\x129\n" +
 	"\n" +
-	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb0\x03\n" +
+	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xf2\x03\n" +
 	"\fUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
@@ -763,9 +779,11 @@ const file_user_proto_rawDesc = "" +
 	"\n" +
 	"user_image\x18\f \x01(\tR\tuserImage\x12\x1b\n" +
 	"\tuser_type\x18\r \x01(\tR\buserType\x12\x1a\n" +
-	"\busername\x18\x0e \x01(\tR\busername\x129\n" +
+	"\busername\x18\x0e \x01(\tR\busername\x12#\n" +
+	"\rmerchant_name\x18\x0f \x01(\tR\fmerchantName\x12\x1b\n" +
+	"\trole_name\x18\x10 \x01(\tR\broleName\x129\n" +
 	"\n" +
-	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\":\n" +
+	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\":\n" +
 	"\x10UserNameResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"E\n" +

@@ -56,7 +56,9 @@ message UserResponse {
     string user_image = 12;
     string user_type = 13;
     string username = 14;
-    google.protobuf.Timestamp created_at = 15;
+    string merchant_name = 15;
+    string role_name = 16;
+    google.protobuf.Timestamp created_at = 17;
 }
 
 message UserNameResponse {
