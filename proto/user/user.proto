@@ -59,6 +59,7 @@ message UserResponse {
     string merchant_name = 15;
     string role_name = 16;
     google.protobuf.Timestamp created_at = 17;
+    string email_verified_at = 18;
 }
 
 message UserNameResponse {
