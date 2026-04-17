@@ -23,6 +23,10 @@ message GetUserByUuidRequest {
     string id_ = 1;
 }
 
+message GetUserByEmailRequest {
+    string email = 1;
+}
+
 message UserRequest {
     int32 id = 1;
     string uuid = 2;
@@ -90,5 +94,6 @@ service UserService {
     rpc Update(UserRequest) returns (ActionUserResponse);
     rpc GetById(GetUserByIdRequest) returns (UserResponse);
     rpc GetByUuid(GetUserByUuidRequest) returns (UserResponse);
+    rpc GetByEmail(GetUserByEmailRequest) returns (UserResponse);
     rpc Delete(GetUserByUuidRequest) returns (ActionUserResponse);
 }
