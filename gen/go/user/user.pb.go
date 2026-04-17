@@ -356,7 +356,7 @@ type UserResponse struct {
 	MerchantName    string                 `protobuf:"bytes,15,opt,name=merchant_name,json=merchantName,proto3" json:"merchant_name,omitempty"`
 	RoleName        string                 `protobuf:"bytes,16,opt,name=role_name,json=roleName,proto3" json:"role_name,omitempty"`
 	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	EmailVerifiedAt string                 `protobuf:"bytes,18,opt,name=email_verified_at,json=emailVerifiedAt,proto3" json:"email_verified_at,omitempty"`
+	EmailVerifiedAt *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=email_verified_at,json=emailVerifiedAt,proto3" json:"email_verified_at,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -510,11 +510,11 @@ func (x *UserResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *UserResponse) GetEmailVerifiedAt() string {
+func (x *UserResponse) GetEmailVerifiedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EmailVerifiedAt
 	}
-	return ""
+	return nil
 }
 
 type UserNameResponse struct {
@@ -768,7 +768,7 @@ const file_user_proto_rawDesc = "" +
 	"\tuser_type\x18\r \x01(\tR\buserType\x12\x1a\n" +
 	"\busername\x18\x0e \x01(\tR\busername\x129\n" +
 	"\n" +
-	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\x9e\x04\n" +
+	"created_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xba\x04\n" +
 	"\fUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
@@ -791,8 +791,8 @@ const file_user_proto_rawDesc = "" +
 	"\rmerchant_name\x18\x0f \x01(\tR\fmerchantName\x12\x1b\n" +
 	"\trole_name\x18\x10 \x01(\tR\broleName\x129\n" +
 	"\n" +
-	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12*\n" +
-	"\x11email_verified_at\x18\x12 \x01(\tR\x0femailVerifiedAt\":\n" +
+	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12F\n" +
+	"\x11email_verified_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\x0femailVerifiedAt\":\n" +
 	"\x10UserNameResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"E\n" +
@@ -845,25 +845,26 @@ var file_user_proto_goTypes = []any{
 var file_user_proto_depIdxs = []int32{
 	9,  // 0: user.v2.UserRequest.created_at:type_name -> google.protobuf.Timestamp
 	9,  // 1: user.v2.UserResponse.created_at:type_name -> google.protobuf.Timestamp
-	5,  // 2: user.v2.ListUserNameResponse.data:type_name -> user.v2.UserNameResponse
-	4,  // 3: user.v2.ListUserResponse.data:type_name -> user.v2.UserResponse
-	0,  // 4: user.v2.UserService.GetAll:input_type -> user.v2.ListUserRequest
-	3,  // 5: user.v2.UserService.Create:input_type -> user.v2.UserRequest
-	3,  // 6: user.v2.UserService.Update:input_type -> user.v2.UserRequest
-	1,  // 7: user.v2.UserService.GetById:input_type -> user.v2.GetUserByIdRequest
-	2,  // 8: user.v2.UserService.GetByUuid:input_type -> user.v2.GetUserByUuidRequest
-	2,  // 9: user.v2.UserService.Delete:input_type -> user.v2.GetUserByUuidRequest
-	7,  // 10: user.v2.UserService.GetAll:output_type -> user.v2.ListUserResponse
-	8,  // 11: user.v2.UserService.Create:output_type -> user.v2.ActionUserResponse
-	8,  // 12: user.v2.UserService.Update:output_type -> user.v2.ActionUserResponse
-	4,  // 13: user.v2.UserService.GetById:output_type -> user.v2.UserResponse
-	4,  // 14: user.v2.UserService.GetByUuid:output_type -> user.v2.UserResponse
-	8,  // 15: user.v2.UserService.Delete:output_type -> user.v2.ActionUserResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	9,  // 2: user.v2.UserResponse.email_verified_at:type_name -> google.protobuf.Timestamp
+	5,  // 3: user.v2.ListUserNameResponse.data:type_name -> user.v2.UserNameResponse
+	4,  // 4: user.v2.ListUserResponse.data:type_name -> user.v2.UserResponse
+	0,  // 5: user.v2.UserService.GetAll:input_type -> user.v2.ListUserRequest
+	3,  // 6: user.v2.UserService.Create:input_type -> user.v2.UserRequest
+	3,  // 7: user.v2.UserService.Update:input_type -> user.v2.UserRequest
+	1,  // 8: user.v2.UserService.GetById:input_type -> user.v2.GetUserByIdRequest
+	2,  // 9: user.v2.UserService.GetByUuid:input_type -> user.v2.GetUserByUuidRequest
+	2,  // 10: user.v2.UserService.Delete:input_type -> user.v2.GetUserByUuidRequest
+	7,  // 11: user.v2.UserService.GetAll:output_type -> user.v2.ListUserResponse
+	8,  // 12: user.v2.UserService.Create:output_type -> user.v2.ActionUserResponse
+	8,  // 13: user.v2.UserService.Update:output_type -> user.v2.ActionUserResponse
+	4,  // 14: user.v2.UserService.GetById:output_type -> user.v2.UserResponse
+	4,  // 15: user.v2.UserService.GetByUuid:output_type -> user.v2.UserResponse
+	8,  // 16: user.v2.UserService.Delete:output_type -> user.v2.ActionUserResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_user_proto_init() }
